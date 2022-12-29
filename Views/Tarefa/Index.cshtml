@@ -1,0 +1,144 @@
+@model IEnumerable<trilha_net_mvc_desafio.Models.Tarefa>;
+
+@{
+    ViewData["Title"] = "Agenda de Tarefas";
+}
+
+<div class="d-flex justify-content-center shadow-sm text-white bg-info mb-2 p-1 rounded rounded-4 w-100 border-bottom border-3">
+    <h3 class="fw-bold text-shadow m-auto">Agenda de Tarefas:</h3>
+</div>
+
+<div class="container overflow-auto container-max bg-light rounded-3 shadow p-3">
+    <div class="d-flex py-2 justify-content-center rounded-3 bg-white shadow-sm mb-2">
+        <a href='@Url.Action("Criar", "Tarefa")' class="text-decoration-none me-2 btn-menu hover bg-info rounded-3 shadow-sm d-flex text-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Nova Tarefa">
+            <i class="m-auto fa-solid fa-file-circle-plus fa-xl"></i>
+        </a>
+        
+        <a href='@Url.Action("Index", "Tarefa", new { sortOrder = ViewBag.IdSortParam })' class="text-decoration-none me-2 btn-menu hover bg-info rounded-3 shadow-sm d-flex text-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ordenar por Id">
+            <i class='m-auto fa-solid @(ViewBag.IdSortParam == "" ? "fa-arrow-down-1-9" : "fa-arrow-up-1-9") fa-xl'></i>
+        </a>
+
+        <a href='@Url.Action("Index", "Tarefa", new { sortOrder = ViewBag.NameSortParam })' class="text-decoration-none me-2 btn-menu hover bg-info rounded-3 shadow-sm d-flex text-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ordenar por Título">
+            <i class='m-auto fa-solid @(ViewBag.NameSortParam == "name_asc" ? "fa-arrow-down-a-z" : "fa-arrow-up-a-z") fa-xl'></i>
+        </a>
+       
+        <a href='@Url.Action("Index", "Tarefa", new { sortOrder = ViewBag.DateSortParam })' class="text-decoration-none btn-menu hover bg-info rounded-3 shadow-sm d-flex text-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ordenar por Data">
+            <i class="m-auto fa-regular fa-calendar fa-xl"></i>
+        </a>
+
+        <div class="spacer mx-3"></div>
+
+        <a href='@Url.Action("Index", "Tarefa", new { sortOrder = "" })' class="text-decoration-none me-3 btn-menu hover bg-info rounded-3 shadow-sm d-flex text-light" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Exibir todos">
+            <i class="m-auto fa-solid fa-list-ul fa-xl"></i>
+        </a>
+
+        @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
+        {
+            <p class="my-auto input-group me-2 pe-3">
+                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = " Filtrar por palavra-chave"})
+                <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por palavra-chave"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+            </p>
+        }
+
+        @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
+        {
+            <p class="my-auto input-group pe-3">
+                @Html.TextBox("searchDate", null, new { @class = "form-control getdate form-group-style", @placeholder = "Filtrar por Data", type="date"})
+                <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por Data"><i class="fa-solid fa-calendar-days fa-xl"></i></button>
+            </p>
+        }
+
+        @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
+        {
+           <p class="my-auto input-group pe-3">
+                <select asp-items="Html.GetEnumSelectList<EnumPrioridadeTarefa>()" name="searchPriority" class="form-control form-group-style">
+                    <option value="">Prioridade</option>
+                </select>
+                <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por Prioridade"><i class="fa-solid fa-layer-group fa-xl"></i></button>
+           </p>
+        }
+
+        @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
+        {
+           <p class="my-auto input-group">
+                <select asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()" name="searchStatus" class="form-control form-group-style">
+                    <option value="">Status</option>
+                </select>
+                <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por Status"><i class="fa-solid fa-chart-simple fa-xl"></i></button>
+           </p>
+        }
+    </div>
+
+    <table class="table table-hover align-middle mb-0">
+        <thead class="navbar-table">
+            <tr class="text-center">
+                <th class="col-sm-0">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th class="col-sm-1">
+                    @Html.DisplayNameFor(model => model.Prioridade)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th class="col-sm-1">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th class="col-sm-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        <label class="bg-secondary id-badge d-flex justify-content-center align-items-center text-light rounded-3 fw-bold px-2">@Html.DisplayFor(model => item.Id)</label>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Descricao)
+                    </td>
+                    <td>
+                        <label class='w-100 text-center p-1 rounded-3
+                            @(item.Prioridade == EnumPrioridadeTarefa.Mínima ? "status-1" :
+                            item.Prioridade == EnumPrioridadeTarefa.Média ? "status-2" :
+                            item.Prioridade == EnumPrioridadeTarefa.Máxima ? "status-3" : "status-4")'>
+                            @Html.DisplayFor(model => item.Prioridade)
+                        </label>
+                    </td>
+                    <td>
+                        <span class="d-flex justify-content-center text-wrap">@Html.DisplayFor(model => item.Data)</span>
+                    </td>
+                    <td>
+                        <label class='w-100 text-center text-white p-1 rounded-3 @(item.Status == EnumStatusTarefa.Finalizado ? "bg-success" : "bg-warning")'>
+                            @Html.DisplayFor(model => item.Status)
+                        </label>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a asp-action="Editar" asp-route-id="@item.Id" class="p-1 actions link-secondary text-center text-decoration-none text-nowrap" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar">
+                                <i class="fa-solid fa-file-pen fa-lg mx-1"></i>
+                            </a>
+                            <div class="spacer-sm mx-1"></div>
+                            <a asp-action="Detalhes" asp-route-id="@item.Id" class="p-1 actions link-secondary text-center text-decoration-none text-nowrap" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Detalhes">
+                                <i class="fa-solid fa-circle-info fa-lg mx-1"></i>
+                            </a>
+                            <div class="spacer-sm mx-1"></div>
+                            <a asp-action="Deletar" asp-route-id="@item.Id" class="p-1 actions link-secondary text-center text-decoration-none text-nowrap" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Deletar">
+                                <i class="fa-solid fa-trash fa-lg mx-1"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

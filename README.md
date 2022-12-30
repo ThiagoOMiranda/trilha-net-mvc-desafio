@@ -26,7 +26,7 @@ _Versão por:_ **Thiago de Oliveira Miranda**
 
 <br>
 
-<img src="wwwroot/images/diagrama.png" alt="Diagrama da classe tarefa" style="width:75%; display: block; margin: 0 auto">
+<p align="center"><img src="wwwroot/images/diagrama.png" alt="Diagrama da classe tarefa" style="width:75%;"></p>
 
 <i style="text-align: center;">
 

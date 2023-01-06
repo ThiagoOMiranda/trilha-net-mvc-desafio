@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Agendar nova tarefa";
 }
-<div class="d-flex align-items-center justify-content-center shadow-sm text-white bg-info m-auto mb-2 rounded rounded-4 p-1 w-50 border-bottom border-3">
+<div class="d-flex align-items-center justify-content-center shadow-sm text-white bg-info m-auto mt-4 mb-2 rounded rounded-4 p-1 w-50 border-bottom border-3">
     <i class="icon-title fa-solid fa-list-check fa-lg rounded-circle shadow-sm d-flex align-items-center justify-content-center me-3"></i>
     <h4 class="fw-bold text-shadow mb-1">Agendar Nova Tarefa:</h4>
 </div>
@@ -19,17 +19,17 @@
                 <label asp-for="Descricao" class="control-label fw-bold mb-1">@Html.DisplayNameFor(model => model.Descricao) :</label>
                 <input asp-for="Descricao" class="form-control" placeholder="Descrição da Tarefa"/>
             </div>
-            <div class="form-group mb-4">
+            <div class="form-group mb-3">
                 <label asp-for="Data" class="control-label fw-bold mb-1">@Html.DisplayNameFor(model => model.Data) :</label>
                 <input type="datetime-local" asp-for="Data" class="form-control" />
             </div>
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
                 <label asp-for="Prioridade" class="input-group-text fw-bold">@Html.DisplayNameFor(model => model.Prioridade) da Tarefa:</label>
                 <select asp-for="Prioridade" asp-items="Html.GetEnumSelectList<EnumPrioridadeTarefa>()" class="form-select">
                     <option value="">Escolha</option>
                 </select>
             </div>
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
                 <label asp-for="Status" class="input-group-text fw-bold">@Html.DisplayNameFor(model => model.Status) da Tarefa:</label>
                 <select asp-for="Status" asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()" class="form-select">
                     <option value="">Escolha</option>

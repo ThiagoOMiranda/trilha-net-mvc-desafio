@@ -34,7 +34,7 @@
 
         @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
         {
-            <p class="my-auto input-group me-2 pe-3">
+            <p class="my-auto input-group me-2 pe-3 w-20">
                 @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = " Filtrar por palavra-chave"})
                 <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por palavra-chave"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             </p>
@@ -51,7 +51,7 @@
         @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
         {
            <p class="my-auto input-group pe-3">
-                <select asp-items="Html.GetEnumSelectList<EnumPrioridadeTarefa>()" name="searchPriority" class="form-control form-group-style">
+                <select asp-items="Html.GetEnumSelectList<EnumPrioridadeTarefa>()" name="searchPriority" class="form-select form-group-style">
                     <option value="">Prioridade</option>
                 </select>
                 <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por Prioridade"><i class="fa-solid fa-layer-group fa-xl"></i></button>
@@ -61,7 +61,7 @@
         @using (Html.BeginForm("Index", "Tarefa", FormMethod.Get))
         {
            <p class="my-auto input-group">
-                <select asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()" name="searchStatus" class="form-control form-group-style">
+                <select asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()" name="searchStatus" class="form-select form-group-style">
                     <option value="">Status</option>
                 </select>
                 <button type="submit" class="m-auto btn btn-menu btn-info hover text-light shadow-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Filtrar por Status"><i class="fa-solid fa-chart-simple fa-xl"></i></button>

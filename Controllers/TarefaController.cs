@@ -109,9 +109,7 @@ namespace trilha_net_mvc_desafio.Controllers
 
             if (!String.IsNullOrEmpty(searchDate))
             {
-                // var parseData = DateTime.ParseExact(searchDate, "dd/MM/yyyy", brCultureInfo);
                 var parseData = Convert.ToDateTime(searchDate, brCultureInfo);
-                // var parseData = DateTime.Parse(searchDate);
                 tarefaBanco = tarefaBanco.Where(s => s.Data.Date == parseData);
             }
 

@@ -1,6 +1,7 @@
 # DIO - Trilha.NET - API e Entity Framework
 
 _Versão por:_ **Thiago de Oliveira Miranda**
+_Mockup:_ https://thiagoomiranda.github.io/trilha-net-mvc-mockup/
 
 <br>
 

@@ -12,10 +12,10 @@
     <link href="~/trilha_net_mvc_desafio.styles.css" asp-append-version="true" rel="stylesheet" />
 </head>
 <body>
-    <header>
+    <header class="fixed-top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom shadow-sm mb-5">
             <div class="container px-4">
-                <div class="title-wrapper d-flex align-items-center justify-content-between rounded-pill p-2 bg-white link-light shadow-sm">
+                <div class="title-wrapper d-flex align-items-center justify-content-between rounded-pill p-1 bg-white link-light shadow-sm">
                     <i class="icon-title fa-solid fa-list-check fa-lg rounded-circle shadow-sm d-flex align-items-center justify-content-center"></i>
                     <a class="text-decoration-none pe-none"><h5 class="navbar-brand fs-5 mx-2 fw-bold m-0 sp-0 text-nowrap text-secondary">TO-DO LIST</h5></a>
                 </div>
@@ -37,8 +37,8 @@
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container h-100 d-flex flex-column justify-content-center">
+        <main role="main" class="w-100 m-auto">
             @RenderBody()
         </main>
     </div>

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Editar farefa";
 }
 
-<div class="d-flex align-items-center justify-content-center shadow-sm text-white bg-info m-auto mb-2 rounded rounded-4 p-1 w-50 border-bottom border-3">
+<div class="d-flex align-items-center justify-content-center shadow-sm text-white bg-info m-auto mt-4 mb-2 rounded rounded-4 p-1 w-50 border-bottom border-3">
     <i class="icon-title fa-solid fa-file-pen fa-lg rounded-circle shadow-sm d-flex align-items-center justify-content-center me-3"></i>
     <h4 class="fw-bold text-shadow">Editar Tarefa:</h4>
 </div>
@@ -20,17 +20,17 @@
                 <label class="control-label fw-bold mb-1">@Html.DisplayNameFor(x => x.Descricao) :</label>
                 <input asp-for="Descricao" class="form-control" />
             </div>
-            <div class="form-group mb-4">
+            <div class="form-group mb-3">
                 <label class="control-label fw-bold mb-1">@Html.DisplayNameFor(x => x.Data) :</label>
                 <input type="datetime-local" asp-for="Data" class="form-control" />
             </div>
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
                 <label class="input-group-text fw-bold">@Html.DisplayNameFor(x => x.Prioridade) da Tarefa :</label>
                 <select asp-for="Prioridade" asp-items="Html.GetEnumSelectList<EnumPrioridadeTarefa>()" class="form-select">
                     <option value="">Escolha</option>
                 </select>
             </div>
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
                 <label class="input-group-text fw-bold">@Html.DisplayNameFor(x => x.Status) da Tarefa :</label>
                 <select asp-for="Status" asp-items="Html.GetEnumSelectList<EnumStatusTarefa>()" class="form-select">
                     <option value="">Escolha</option>

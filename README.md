@@ -2,7 +2,7 @@
 
 _Versão por:_ **Thiago de Oliveira Miranda**
 
-_Mockup:_ https://thiagoomiranda.github.io/trilha-net-mvc-mockup/
+_Mockup funcional Html/Javascript:_ https://thiagoomiranda.github.io/trilha-net-mvc-mockup/
 
 <br>
 
